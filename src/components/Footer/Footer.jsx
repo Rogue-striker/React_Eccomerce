@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaFacebookF, FaTwitter, FaInstagramSquare,FaLink,FaHome } from 'react-icons/fa'
 
+//* Need to redesign this component 
 
 const Footer = () => {
 
@@ -42,10 +43,6 @@ const Footer = () => {
                         <FaLink className='text-white' size={20} />
                         <p  className='pl-1' >Categories</p>
                     </div>
-                </div>
-                <div className={divStyles}>
-                    <h1 className={h1Style}>Address</h1>
-                    <p>CmrCollege of engineering and technology</p>
                 </div>
             </div>
 

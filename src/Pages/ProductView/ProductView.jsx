@@ -1,19 +1,12 @@
 import React from 'react'
-import Slider from './../../components/Slider/Slider.jsx'
 
 const ProductView = () => {
-    const images = [
-        "https://via.placeholder.com/720x400",
-        "https://via.placeholder.com/720x500",
-        "https://via.placeholder.com/720x600",
-        "https://via.placeholder.com/720x700",
-    ]
+
     return (
         <div className='container mx-auto'>
             <div className='h-100 w-100 flex flex-col sm:flex-row'>
                 <div className=''>
-                    <Slider images={images}/>
-                   
+                    <img src= "https://via.placeholder.com/400x400" alt ="image placehold"/>            
                 </div>
                 <div className='p-2'>
                     <div className='pt-2'>

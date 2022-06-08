@@ -7,9 +7,14 @@ module.exports = {
       },
       height:{
         'navbar' : '5vh',
+        '100vh':'100vh',
         '90vh' : '90vh',
         '80vh' : '80vh',
         '40vh' : '40vh',
+      },
+      width:{
+        '100vw':'100vw',
+        '90vw' : '90vw',
       },
       fontFamily:{
         lato : ['Lato','sans-serif'],
@@ -17,6 +22,7 @@ module.exports = {
       },
       colors:{
         buybutton : '#E2703A',
+        errorbg : '#08588f',
       }
     },
 

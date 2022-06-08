@@ -9,7 +9,7 @@ const Navbar = () => {
     }
     return (
         <>
-            <div className="container mx-auto h-navbar p-4 mb-5 sm:p-5 ">
+            <div className="container mx-auto h-navbar p-4 mb-5 sm:p-5">
                 <div className="flex justify-between">
                     <div className="flex">
                     <h1 className="font-bold text-2xl sm:text-4xl">The Store.</h1>
