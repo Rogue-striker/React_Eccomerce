@@ -1,6 +1,7 @@
 import React from 'react'
 import ParticlesBackground from '../Particles/Particles'
 import {EyeIcon, EyeOffIcon} from '@heroicons/react/solid'
+import { Link } from 'react-router-dom'
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = React.useState(false)
@@ -15,7 +16,9 @@ const LoginPage = () => {
         <div className="w-full max-w-md">
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <div className='flex items-center justify-center pt-6 pb-8'>
-              <h1 className="font-bold text-2xl sm:text-4xl">The Store.</h1>
+             
+              <h1 className="font-bold text-2xl sm:text-4xl cursor-pointer">The Store.</h1>
+             
             </div>
             <div className='flex items-center justify-center pb-2'>
               <h3 className="font-bold text-xl">Login</h3>
@@ -49,9 +52,7 @@ const LoginPage = () => {
                 <EyeOffIcon className='h-4 w-4 absolute right-3 top-3  text-gray-600' 
                   onClick={handleShowPassword}
                 />
-                
               }
-              
               </div>
             </div>
             <div className='flex flex-col items-center'>
@@ -59,13 +60,16 @@ const LoginPage = () => {
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Sign In</button>
               </div>
               <div className='mt-2 flex flex-col items-center justify-center' >
-                <p className='text-sm text-gray-600 hover:text-blue-800 mt-2'>
-                  Forgot Your Password
-                </p>
-                <p className='text-sm text-gray-600 hover:text-blue-800 mt-2'>
-                  Not Yet Registered? Register.
-                </p>
-
+                <Link to="/forgotpassword">
+                  <p className='text-sm text-gray-600 hover:text-blue-800 mt-2 cursor-pointer'>
+                    Forgot Your Password
+                  </p>
+                </Link>
+                <Link to="/register">
+                  <p className='text-sm text-gray-600 hover:text-blue-800 mt-2 cursor-pointer' >
+                    Not Yet Registered? Register.
+                  </p>
+                </Link>
               </div>
             </div>
           </form>
