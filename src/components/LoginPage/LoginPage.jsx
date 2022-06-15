@@ -16,9 +16,9 @@ const LoginPage = () => {
         <div className="w-full max-w-md">
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <div className='flex items-center justify-center pt-6 pb-8'>
-             
+              <Link to =  '/'>
               <h1 className="font-bold text-2xl sm:text-4xl cursor-pointer">The Store.</h1>
-             
+              </Link>
             </div>
             <div className='flex items-center justify-center pb-2'>
               <h3 className="font-bold text-xl">Login</h3>

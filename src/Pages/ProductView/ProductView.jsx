@@ -1,10 +1,12 @@
 import React from 'react'
-
+import NavBar from './../../components/Navbar/NavBar';
 const ProductView = () => {
 
     return (
-        <div className='container mx-auto'>
-            <div className='h-100 w-100 flex flex-col sm:flex-row'>
+        <>
+        <NavBar/>
+        <div className='container mx-auto sm:pt-8'>
+            <div className='h-100 w-100 flex flex-col sm:flex-row '>
                 <div className=''>
                     <img src= "https://via.placeholder.com/400x400" alt ="image placehold"/>            
                 </div>
@@ -26,6 +28,7 @@ const ProductView = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

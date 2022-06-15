@@ -2,6 +2,8 @@ import React from 'react'
 import CatalogueCard from './../CatalogueCard/CatalogueCard'
 import mencat from './../../assets/mencat.jpg'
 import womencat from './../../assets/womencat.jpg'
+import { Link } from 'react-router-dom'
+
 const category = [
   {
     id: 1,
@@ -33,7 +35,9 @@ const Catalogue = () => {
           }
         </div>
         <div className='flex items-center justify-center sm:mt-10 my-6'>
-          <button className='bg-blue-500 rounded text-white sm:px-3 sm:py-2 px-2 py-1 font-medium '>View All</button>
+          <Link to = '/products'>
+          <button className='bg-blue-500 rounded text-white sm:px-3 sm:py-2 px-2 py-1'>View All</button>
+          </Link>
         </div>
       </div>
     </div>

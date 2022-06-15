@@ -39,7 +39,7 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className=" hidden  sm:flex flex-row items-center">
-                        <li className={style}><Link to='/'>
+                        <li className={style}><Link to='/products'>
                             Home
                         </Link>
                         </li>
