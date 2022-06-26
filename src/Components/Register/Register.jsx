@@ -1,10 +1,34 @@
-import React from 'react'
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ParticlesBackground from '../Particles/Particles';
-import { Link,useNavigate } from 'react-router-dom';
+import Axios from './../../utils/Axios/Axios.js';
+
 const Register = () => {
-    const navigate = useNavigate();
-    const toLoginPage = () => {
-        navigate('/login');
+    useEffect(() => {
+        console.log("rerender");
+    }, [])
+    const [userData, setUserData] = useState({});
+    const handleSignUp = (e) => {
+        e.preventDefault();
+        Axios.post("/auth/register", {
+            ...userData
+        }).then((res) => {
+            if (res.data.success) {
+                alert(res.data.success);
+            }
+        }).catch((error) => {
+            if(error.response)
+                alert(error.response.data.error);
+            else {
+                alert("Something went wrong");
+            }
+        })
+    }
+    const handleChange = (e) => {
+        setUserData({
+            ...userData,
+            [e.target.name]: e.target.value
+        })
     }
     return (
         <>
@@ -15,7 +39,7 @@ const Register = () => {
                     <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                         <div className='flex items-center justify-center pt-6 pb-8'>
                             <Link to="/">
-                            <h1 className="font-bold text-2xl sm:text-4xl cursor-pointer">The Store.</h1>
+                                <h1 className="font-bold text-2xl sm:text-4xl cursor-pointer">The Store.</h1>
                             </Link>
                         </div>
                         <div className='flex items-center justify-center pb-2'>
@@ -29,7 +53,8 @@ const Register = () => {
                                 Name
                             </label>
                             <input
-                                className='shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline' id='email' type='text' placeholder='Enter Your Email'
+                                className='shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline' name='name' type='text' placeholder='Enter Your Name'
+                                onChange={handleChange}
                             />
                         </div>
                         <div className='mb-2'>
@@ -40,7 +65,8 @@ const Register = () => {
                                 Email
                             </label>
                             <input
-                                className='shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline' id='email' type='text' placeholder='Enter Your Name'
+                                className='shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline' name='email' type='text' placeholder='Enter Your Email'
+                                onChange={handleChange}
                             />
                         </div>
                         <div className='mb-2'>
@@ -51,7 +77,8 @@ const Register = () => {
                                 Phone
                             </label>
                             <input
-                                className='shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline' id='email' type='text' placeholder='Enter Your Mobile Number'
+                                className='shadow appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline' name='phone' type='text' placeholder='Enter Your Mobile Number'
+                                onChange={handleChange}
                             />
                         </div>
                         <div className='mb-2'>
@@ -62,7 +89,8 @@ const Register = () => {
                                 Password
                             </label>
                             <input
-                                className='shadow appearance-none border border-gray-300  rounded w-full py-2 pl-3 pr-8  leading-tight focus:outline-none focus:shadow-outline' id='email' type='text' placeholder='********'
+                                className='shadow appearance-none border border-gray-300  rounded w-full py-2 pl-3 pr-8  leading-tight focus:outline-none focus:shadow-outline' name='password' type='password' placeholder='********'
+                                onChange={handleChange}
                             />
                         </div>
                         <div className='mb-4'>
@@ -73,12 +101,14 @@ const Register = () => {
                                 Confirm Password
                             </label>
                             <input
-                                className='shadow appearance-none border border-gray-300  rounded w-full py-2 pl-3 pr-8  leading-tight focus:outline-none focus:shadow-outline' id='email' type='text' placeholder='********'
+                                className='shadow appearance-none border border-gray-300  rounded w-full py-2 pl-3 pr-8  leading-tight focus:outline-none focus:shadow-outline' name='confirmpassword' type='text' placeholder='********'
+                                onChange={handleChange}
                             />
                         </div>
                         <div className='flex flex-col items-center'>
                             <div className="mt-2">
-                                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                    onClick={handleSignUp}>
                                     Sign Up
                                 </button>
                             </div>

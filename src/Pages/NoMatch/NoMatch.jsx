@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../../components/Navbar/NavBar';
+import Navbar from '../../Components/Navbar/NavBar';
 
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
 

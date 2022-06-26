@@ -1,7 +1,7 @@
 import React from 'react'
 import CatalogueCard from './../CatalogueCard/CatalogueCard'
-import mencat from './../../assets/mencat.jpg'
-import womencat from './../../assets/womencat.jpg'
+import mencat from './../../Assets/mencat.jpg'
+import womencat from './../../Assets/womencat.jpg'
 import { Link } from 'react-router-dom'
 
 const category = [

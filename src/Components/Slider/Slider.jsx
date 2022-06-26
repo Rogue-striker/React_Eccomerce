@@ -7,9 +7,7 @@ import Images from './Images.jsx';
 const Slider = (props) => {
     const [previndex, setIndex] = useState(0);
     useEffect(() => {
-
         const intId = setInterval(() => {
-            console.log("in useEffect")
             setIndex((previndex) => {
                 return (previndex + 1) % Images.length
             });

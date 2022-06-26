@@ -1,20 +1,24 @@
-import { React } from 'react';
-import { MenuIcon, SearchIcon } from '@heroicons/react/outline'
 import { Menu, Transition } from '@headlessui/react';
+import { MenuIcon, SearchIcon } from '@heroicons/react/outline';
+import { Link, Outlet } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import MenuItem from './MenuItem';
-import { Outlet ,Link} from 'react-router-dom';
+
+
 const Navbar = () => {
+
+    const loginStatus = useSelector(state => state.user.loginStatus);
     const style = "sm: text-md mx-2 px-2 cursor-pointer list-none";
     const displaySearchField = () => {
         console.log("search");
-    }  
+    }
     return (
         <>
             <div className="container mx-auto h-navbar p-4 mb-5 sm:p-5">
                 <div className="flex justify-between">
                     <div className="flex">
-                        <Link to ="/">
-                        <h1 className="font-bold text-2xl sm:text-4xl cursor-pointer">The Store.</h1>
+                        <Link to="/">
+                            <h1 className="font-bold text-2xl sm:text-4xl cursor-pointer">The Store.</h1>
                         </Link>
                     </div>
                     <div className="flex flex-row items-center ">
@@ -33,9 +37,9 @@ const Navbar = () => {
                         focus:outline-none
                       focus:bg-white
                         "
-                        type="text"
-                        placeholder='search for products and more' />
-                        <SearchIcon className='hidden md:block md:h-5 md:w-5 md:absolute md:text-gray-500 md:right-2 md:top-2.5 '/>
+                                type="text"
+                                placeholder='search for products and more' />
+                            <SearchIcon className='hidden md:block md:h-5 md:w-5 md:absolute md:text-gray-500 md:right-2 md:top-2.5 ' />
                         </div>
                     </div>
                     <div className=" hidden  sm:flex flex-row items-center">
@@ -53,17 +57,22 @@ const Navbar = () => {
                                 Cart
                             </Link>
                         </li>
-        
-                            <Link to="register">
-                            <button className="mx-2 text-md rounded px-1 py-1">
-                                Sign up
-                            </button>
-                            </Link>
-                        <Link to="login">
-                            <button className="mx-2 text-md rounded px-2 py-1 bg-blue-600 text-white">
-                                Log in
-                            </button>
-                        </Link>
+                        {
+                            !loginStatus ?
+                                <><Link to="/register">
+                                    <button className="mx-2 text-md rounded px-1 py-1">
+                                        Sign up
+                                    </button>
+                                </Link><Link to="/login">
+                                        <button className="mx-2 text-md rounded px-2 py-1 bg-blue-600 text-white">
+                                            Log in
+                                        </button>
+                                    </Link></>
+                                :
+                                <button className="mx-2 text-md rounded px-2 py-2 hover:shadow-[0px_0px_2px_2px_rgba(59,130,246,1   )]">
+                                    Log out
+                                </button>
+                        }
                     </div>
                     <div className='md:hidden relative flex items-center'>
                         <SearchIcon className="h-6 w-6 mr-3" onClick={displaySearchField} />
@@ -84,8 +93,15 @@ const Navbar = () => {
                                     <MenuItem name="Home" />
                                     <MenuItem name="About" />
                                     <MenuItem name="Cart" />
-                                    <MenuItem name="Sign up" />
-                                    <MenuItem name="Log in" />
+                                    {
+
+                                        !loginStatus ?
+                                            <>
+                                                <MenuItem name="Sign up" />
+                                                <MenuItem name="Log in" />
+                                            </> :
+                                            <MenuItem name="Log out" />
+                                    }
                                 </div>
                             </Menu.Items>
                         </Menu>

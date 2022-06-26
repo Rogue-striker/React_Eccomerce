@@ -1,19 +1,17 @@
-import React from "react";
-import Navbar from "./components/Navbar/NavBar";
-import CartPage from "./components/CartPage/CartPage";
-import {Routes, Route} from 'react-router-dom';
-import ProductView from "./Pages/ProductView/ProductView";
+import { Route, Routes } from 'react-router-dom';
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
+import LoginPage from './Components/LoginPage/LoginPage';
+import RegisterPage from './Components/Register/Register';
+import CartPage from "./Pages/CartPage/CartPage.jsx";
+import Checkout from './Pages/Checkout/Checkout';
 import Homepage from "./Pages/Homepage/Homepage";
-import ProductPage from "./Pages/ProductPage/ProductPage";
 import NoMatch from "./Pages/NoMatch/NoMatch";
-import LoginPage from './components/LoginPage/LoginPage'
-import RegisterPage from './components/Register/Register'
-import ForgotPassword from './components/ForgotPassword/ForgotPassword'
+import ProductPage from "./Pages/ProductPage/ProductPage";
+import ProductView from "./Pages/ProductView/ProductView";
 
 function App(){
   return (
   <>
-    
    <Routes>
      <Route path = "/" element = {<Homepage/>} />
      <Route path = "/login"  element = {<LoginPage/>}/>
@@ -22,6 +20,7 @@ function App(){
      <Route path = "/products" element = {<ProductPage/>} />
      <Route path = "/cart" element = {<CartPage/>} />
      <Route path = "/product/:id" element= {<ProductView/>} />
+     <Route path = "/checkout"  element = {<Checkout/>} />
      <Route path = "*" element = {<NoMatch/>} />
    </Routes>
   </>

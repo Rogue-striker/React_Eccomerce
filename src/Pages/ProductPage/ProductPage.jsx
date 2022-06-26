@@ -1,8 +1,8 @@
 import React , { useEffect, useState } from 'react';
 import { FaChevronUp, FaFilter } from 'react-icons/fa';
-import FilterSection from '../../components/FilterSection/FilterSection';
-import NavBar from '../../components/Navbar/NavBar';
-import ProductList from '../../components/ProductLists/ProductList';
+import FilterSection from '../../Components/FilterSection/FilterSection';
+import NavBar from '../../Components/Navbar/NavBar';
+import ProductList from '../../Components/ProductLists/ProductList';
 
 const ProductPage = () => {
   const [ShowTopBtn, setShowTopBtn] = useState(false);

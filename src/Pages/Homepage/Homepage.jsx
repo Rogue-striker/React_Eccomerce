@@ -1,10 +1,9 @@
-import React from 'react'
-import Slider from './../../components/Slider/Slider.jsx'
-import PriceRange from './../../components/PriceRange/PriceRange.jsx'
-import Footer from './../../components/Footer/Footer.jsx'
-import Catalogue from './../../components/Catalogue/Catalogue.jsx'
-import Images from './../../components/Slider/Images.jsx'
-import Navbar from '../../components/Navbar/NavBar.jsx'
+import Catalogue from '../../Components/Catalogue/Catalogue'
+import Footer from '../../Components/Footer/Footer.jsx'
+import Navbar from '../../Components/Navbar/NavBar.jsx'
+import PriceRange from '../../Components/PriceRange/PriceRange'
+import Images from '../../Components/Slider/Images.jsx'
+import Slider from '../../Components/Slider/Slider.jsx'
 const Homepage = () => {
   return (
     <>
