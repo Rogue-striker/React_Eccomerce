@@ -5,18 +5,25 @@ const userSlice = createSlice({
     initialState: {
         user: null,
         loginStatus : false,
+        cart : [],
     },
     reducers: {
         setUser: (state, action) => {
             state.user = action.payload;
         },
-        removeUser : (state, action) => {
-            state.user = null;
-        },
+
         setLoginStatus : (state, action) => {
             state.loginStatus = action.payload;
         },
+        addToCart : (state, action) =>{
+            [
+                ...state,
+                action.payload,
+            ]
+        }
+
     }
 })
 
+export const {setUser, setLoginStatus, addToCart} = userSlice.actions;
 export default userSlice.reducer;

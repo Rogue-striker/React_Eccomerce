@@ -22,6 +22,7 @@ const ProductPage = () => {
       behavior: 'smooth',
     });
   }
+  const filterOptions = [ "Category 2" ]
   return (
     <>
       <NavBar />
@@ -38,12 +39,12 @@ const ProductPage = () => {
           <FilterSection />
         </div>
         <div className='w-full flex flex-wrap sm:gap-7 sm:ml-2'>
-          <ProductList />
+          <ProductList  filterOptions={filterOptions}/>
         </div>
         {
           ShowTopBtn ? <div className='fixed bottom-14 right-12 z-50 h-14 w-14 bg-white
         shadow-[0_3px_15px_rgb(59,130,246,1)] 
-          rounded-full flex items-center justify-center'  
+          rounded-full flex items-center justify-center cursor-pointer'  
             onClick={ScrollToTop}>
             <FaChevronUp />
           </div>

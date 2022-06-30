@@ -1,17 +1,29 @@
 import { Menu, Transition } from '@headlessui/react';
 import { MenuIcon, SearchIcon } from '@heroicons/react/outline';
-import { Link, Outlet } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { setLoginStatus } from '../../Features/UserSlice';
 import MenuItem from './MenuItem';
 
-
 const Navbar = () => {
-
+    const [searchValue, setSearchValue] = useState("");
     const loginStatus = useSelector(state => state.user.loginStatus);
+    const navigate = useNavigate();
     const style = "sm: text-md mx-2 px-2 cursor-pointer list-none";
-    const displaySearchField = () => {
-        console.log("search");
+    const handleSearch = (e) => {
+        setSearchValue(
+            e.target.value
+        );
     }
+    const displaySearchField = () => {
+        navigate("/products", { searchValue })
+    }
+
+    const handleLogOut = ()=>{
+        setLoginStatus(false);
+    }
+
     return (
         <>
             <div className="container mx-auto h-navbar p-4 mb-5 sm:p-5">
@@ -35,11 +47,12 @@ const Navbar = () => {
                       focus:border-gray-400
                         md:rounded md:h-10 md:w-96
                         focus:outline-none
-                      focus:bg-white
-                        "
+                      focus:bg-white"
                                 type="text"
-                                placeholder='search for products and more' />
-                            <SearchIcon className='hidden md:block md:h-5 md:w-5 md:absolute md:text-gray-500 md:right-2 md:top-2.5 ' />
+                                placeholder='search for products and more'
+                                onChange={handleSearch}
+                                value={searchValue} />
+                            <SearchIcon className='hidden md:block md:h-5 md:w-5 md:absolute md:text-gray-500 md:right-2 md:top-2.5 cursor-pointer' onClick={displaySearchField} />
                         </div>
                     </div>
                     <div className=" hidden  sm:flex flex-row items-center">
@@ -63,19 +76,22 @@ const Navbar = () => {
                                     <button className="mx-2 text-md rounded px-1 py-1">
                                         Sign up
                                     </button>
-                                </Link><Link to="/login">
+                                </Link>
+                                <Link to="/login">
                                         <button className="mx-2 text-md rounded px-2 py-1 bg-blue-600 text-white">
                                             Log in
                                         </button>
                                     </Link></>
                                 :
-                                <button className="mx-2 text-md rounded px-2 py-2 hover:shadow-[0px_0px_2px_2px_rgba(59,130,246,1   )]">
+                                <button className="mx-2 text-md rounded px-2 py-2 hover:shadow-[0px_0px_2px_2px_rgba(59,130,246,1   )]"
+                                 onClick={()=>handleLogOut}
+                                >
                                     Log out
                                 </button>
                         }
                     </div>
                     <div className='md:hidden relative flex items-center'>
-                        <SearchIcon className="h-6 w-6 mr-3" onClick={displaySearchField} />
+                        <SearchIcon className="h-6 w-6 mr-3 cursor-pointer" onClick={displaySearchField} />
                         <Menu>
                             <Menu.Button>
                                 <MenuIcon className='h-6 w-6' />

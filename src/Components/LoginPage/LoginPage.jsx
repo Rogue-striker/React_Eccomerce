@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import ParticlesBackground from '../Particles/Particles'
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Axios from './../../utils/Axios/Axios.js'
-
+import {useDispatch, useSelector} from 'react-redux'
+import {setLoginStatus} from './../../Features/UserSlice.js'
 
 const LoginPage = () => {
+  const loginStatus = useSelector(state => state.loginStatus)
   const [showPassword, setShowPassword] = useState(false)
   const [loginDetails, setLoginDetails] = useState({
     'email': '',
@@ -15,7 +17,8 @@ const LoginPage = () => {
     'email': false,
     'password': false
   });
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleShowPassword = () => {
     setShowPassword(!showPassword)
   }
@@ -41,6 +44,7 @@ const LoginPage = () => {
   }
 
   const handleLogin = (e) => {
+    
     e.preventDefault();
     if (loginDetails.password.length === 0) {
       setshowError({
@@ -60,12 +64,13 @@ const LoginPage = () => {
           console.log(res)
           if (res.data.success) {
             localStorage.setItem('accessToken', res.data.accessToken)
-        
+            dispatch(setLoginStatus(true));
+            navigate("")
           }
         })
         .catch(err => {
           console.log(err )
-          if(err.response.data)
+          if(err.response?.data)
             alert(err.response.data.error)
           else {
             alert('Something went wrong')

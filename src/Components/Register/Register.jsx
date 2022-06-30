@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ParticlesBackground from '../Particles/Particles';
 import Axios from './../../utils/Axios/Axios.js';
 
@@ -8,17 +8,22 @@ const Register = () => {
         console.log("rerender");
     }, [])
     const [userData, setUserData] = useState({});
+    const navigate = useNavigate();
     const handleSignUp = (e) => {
+
         e.preventDefault();
         Axios.post("/auth/register", {
             ...userData
         }).then((res) => {
             if (res.data.success) {
                 alert(res.data.success);
+
             }
         }).catch((error) => {
-            if(error.response)
+            if (error.response) {
                 alert(error.response.data.error);
+                navigate("/login")
+            }
             else {
                 alert("Something went wrong");
             }
